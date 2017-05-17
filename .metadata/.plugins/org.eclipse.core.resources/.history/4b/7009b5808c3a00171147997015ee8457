@@ -1,0 +1,10 @@
+package org.wpattern.spring.oauth2.security;
+
+import org.springframework.web.filter.GenericFilterBean;
+
+public class JWTAutenticationFilter extends GenericFilterBean{
+	
+	private static final String TOKEN_PREFIX = "Bearer";
+	
+
+}

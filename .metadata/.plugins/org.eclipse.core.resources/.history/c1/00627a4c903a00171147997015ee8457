@@ -1,0 +1,23 @@
+package org.wpattern.spring.oauth2.security;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
+	
+	public JWTLoginFilter(AuthenticationManager authenticationManager){
+		super(new AntPathRequestMatcher("/api/public/login"));
+		setAuthenticationManager(authenticationManager);
+	}
+	
+	@Override
+	public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException, IOException, ServletException{
+		return null;
+	}
+
+}

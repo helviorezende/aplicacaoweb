@@ -1,0 +1,35 @@
+package org.wpattern.spring.oauth2.security;
+
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.web.filter.GenericFilterBean;
+
+import io.jsonwebtoken.Jwts;
+
+public class JWTAuthenticationFilter extends GenericFilterBean{
+	
+	private static final String TOKEN_PREFIX = "Bearer";
+	
+	private static final String HEADER_STRING = "Authorization";
+	
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException{
+		String token = ((HttpServletRequest) request).getHeader(HEADER_STRING);
+		
+		if (token !=null){
+			String user = Jwts.parser().setSigningKey("secret").parseClaimsJws(token.replace(TOKEN_PREFIX, "")).getBody().getSubject();
+			
+			Authentication authentication = null;
+			
+			
+		}
+	}
+	
+}

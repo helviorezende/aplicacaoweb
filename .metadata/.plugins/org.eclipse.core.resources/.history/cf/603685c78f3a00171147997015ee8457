@@ -1,0 +1,9 @@
+package org.wpattern.spring.oauth2.security;
+
+public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
+	
+	public JWTLoginFilter(AuthenticationManager authenticationManager){
+		
+	}
+
+}
